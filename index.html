@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cybersécurité - Alessandro Peys</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box; cursor: none;}
+        html {scroll-behavior: smooth;}
+        body {font-family: 'Montserrat', sans-serif; color: #fff; background: #1c1c1e; min-height: 100vh; display: flex; flex-direction: column; position: relative;}
+        .custom-cursor {position: fixed; width: 20px; height: 20px; border: 2px solid #ff6b6b; border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 10000; transition: transform 0.1s ease;}
+        nav {background: #000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 6px 10px rgba(0, 0, 0, 0.7); position: fixed; top: 0; width: 100%; z-index: 1000;}
+        nav .logo {font-size: 1.5em; font-weight: bold; color: #ff6b6b; text-transform: uppercase; letter-spacing: 2px; cursor: pointer;}
+        nav ul {list-style: none; display: flex; gap: 25px;}
+        nav ul li a {text-decoration: none; color: #fff; transition: color 0.3s; font-weight: 500; text-transform: uppercase; position: relative;}
+        nav ul li a::after {content: ''; position: absolute; left: 0; bottom: -5px; width: 100%; height: 2px; background: #ff6b6b; transform: scaleX(0); transition: transform 0.3s; transform-origin: right;}
+        nav ul li a:hover::after {transform: scaleX(1); transform-origin: left;}
+        .hero {height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; background: linear-gradient(135deg, #2c2c2e, #1c1c1e); color: #fff; position: relative; overflow: hidden;}
+        .hero h1 {font-size: 4em; margin-bottom: 20px; color: #ff6b6b; animation: fadeIn 2s;}
+        .hero p {font-size: 1.5em; color: #ccc; animation: fadeIn 3s; margin-bottom: 30px;}
+        .hero .download-btn {padding: 15px 30px; background-color: #ff6b6b; color: #fff; border: none; border-radius: 10px; text-decoration: none; font-size: 1.2em; transition: background-color 0.3s ease; animation: fadeIn 4s;}
+        .hero .download-btn:hover {background-color: #ffa6a6;}
+        .hero::before {content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, transparent 70%); animation: rotate 10s infinite linear; z-index: 0;}
+        @keyframes rotate {from {transform: rotate(0deg);} to {transform: rotate(360deg);}}
+        @keyframes fadeIn {from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);}}
+        .hero-content {position: relative; z-index: 1;}
+        .section {padding: 80px 20px; text-align: center; border-bottom: 1px solid #333;}
+        .section h2 {font-size: 2.5em; margin-bottom: 40px; color: #ff6b6b;}
+        .projects {display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;}
+        .project {background: #2c2c2e; border-radius: 20px; overflow: hidden; width: 300px; box-shadow: 0 6px 15px rgba(0,0,0,0.5); transition: transform 0.5s;}
+        .project:hover {transform: translateY(-15px);}
+        .project img {width: 100%; height: 200px; object-fit: cover;}
+        .project-content {padding: 20px;}
+        .project-content h3 {margin-bottom: 15px; color: #ff6b6b; font-size: 1.5em;}
+        .project-content p {color: #ccc; margin-bottom: 10px; font-size: 1.1em;}
+        .project-content a {text-decoration: none; color: #ff6b6b; font-weight: bold; transition: color 0.3s;}
+        .project-content a:hover {color: #ffa6a6;}
+        .contact {text-align: center; padding: 60px 20px;}
+        .contact h2 {font-size: 2em; color: #ff6b6b; margin-bottom: 30px;}
+        .contact p {color: #ccc; margin-bottom: 20px; font-size: 1.2em;}
+        footer {text-align: center; padding: 30px; background: #000; color: #fff; margin-top: auto;}
+    </style>
+</head>
+<body>
+    <div class="custom-cursor" id="cursor"></div>
+    <nav>
+        <div class="logo">ALESSANDRO</div>
+        <ul>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Alessandro Peys</h1>
+            <p>Cybersecurity Portfolio</p>
+            <a href="CV ALESSANDRO .docx" download class="download-btn">Télécharger mon CV</a>
+        </div>
+    </section>
+
+    <section class="section" id="projets">
+        <h2>Projets</h2>
+        <div class="projects">
+            <div class="project">
+                <img src="reseau-mondial-connexion-technologie-3d.webp" alt="Réseau Wi-Fi">
+                <div class="project-content">
+                    <h3>Sécurisation Réseau Wi-Fi</h3>
+                    <p>Installation et sécurisation d'un réseau Wi-Fi avec authentification WPA3 et segmentation avancée.</p>
+                    <a href="wifi_project/wifi.html">En savoir plus</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="logging-levels (1).webp" alt="Analyse de Logs">
+                <div class="project-content">
+                    <h3>Analyse de Logs avec ELK</h3>
+                    <p>Déploiement de la suite ELK pour surveiller et analyser les journaux système et détecter les incidents.</p>
+                    <a href="logs_project/logs.html">En savoir plus</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="predicciones-ciberseguridad-2020-780x470.webp" alt="Honeypot">
+                <div class="project-content">
+                    <h3>Développement d'un Honeypot</h3>
+                    <p>Conception et déploiement d'un honeypot pour attirer et analyser les activités malveillantes.</p>
+                    <a href="honeypot_project/honeypot.html">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <p>Vous pouvez me contacter par e-mail : alessandro357753@gmail.com</p>
+    </section>
+
+    <footer>
+        &copy; 2024 - Alessandro Peys | Tous droits réservés.
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+    </script>
+</body>
+</html>
