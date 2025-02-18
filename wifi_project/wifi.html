@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détection de Réseaux Wi-Fi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 60%;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+            transition: transform 0.5s ease;
+            margin-bottom: 20px;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffa6a6;
+        }
+
+        #results {
+            margin-top: 30px;
+            text-align: left;
+            display: inline-block;
+            border: 2px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #2e2e2e;
+            max-width: 60%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+        }
+
+        a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-size: 1.3em;
+            margin-top: 30px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ffa6a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>📡 Détection de Réseaux Wi-Fi</h1>
+    <p>
+        Ce projet analyse les réseaux Wi-Fi environnants et affiche les résultats directement ici.  
+        ⚠️ Projet éducatif : aucune connexion réelle n'est établie.
+    </p>
+
+    <!-- Image illustrant le réseau Wi-Fi -->
+    <img src="../reseau-mondial-connexion-technologie-3d.webp" alt="Réseau Wi-Fi">
+
+    <!-- Bouton de lancement de la détection -->
+    <br><br>
+    <button onclick="startScan()">🔍 Lancer la Détection</button>
+
+    <!-- Zone d'affichage des résultats -->
+    <div id="results">
+        <p>🕵️ Cliquez sur le bouton ci-dessus pour démarrer l'analyse.</p>
+    </div>
+
+    <!-- Retour au portfolio -->
+    <br><br>
+    <a href="../index.html">🔙 Retour au portfolio</a>
+
+    <!-- Script JavaScript pour interagir avec Flask -->
+    <script>
+        async function startScan() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = "⏳ Analyse en cours...";
+
+            try {
+                const response = await fetch('http://localhost:5000/scan-wifi');
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    resultsDiv.innerHTML = "<p>⚠️ Aucun réseau détecté. Vérifiez votre Wi-Fi.</p>";
+                } else {
+                    resultsDiv.innerHTML = `<ul>${data.map(net => `<li>📡 ${net}</li>`).join('')}</ul>`;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `❌ Erreur : ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
